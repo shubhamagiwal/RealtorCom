@@ -3,7 +3,7 @@ import java.util.*;
 
 public class AnagramFinder {
 
-	private HashMap<Integer,ArrayList<String>> dictionary= new HashMap<Integer,ArrayList<String>> ();
+	private HashMap<String,ArrayList<String>> dictionary= new HashMap<String,ArrayList<String>> ();
 	long startTime,endTime;
 	long differenceTimeInMilli;
 
@@ -36,25 +36,29 @@ public class AnagramFinder {
 
 	/*Use HashMap to put the contents of the file*/
 	public void putIntoDictionary(String word) {
+		String wordSorted= sortString(word);
 		ArrayList <String> tempArray = new ArrayList<String>();
-		if(dictionary.containsKey(word.length())) {
-		    tempArray=dictionary.get(word.length());
+		if(dictionary.containsKey(wordSorted)) {
+		    tempArray=dictionary.get(wordSorted);
 			tempArray.add(word);
-			dictionary.put(word.length(),tempArray);
+			dictionary.put(wordSorted,tempArray);
 		}else {
 			tempArray.add(word);
-			dictionary.put(word.length(),tempArray);
+			dictionary.put(wordSorted,tempArray);
 		}
 	}
 
 	/* Interactive Console*/
 	public void interactiveConsole() {
-		    Scanner user_input = new Scanner(System.in);
+		Scanner user_input = new Scanner(System.in);
+		boolean flag = true;
+		while(flag) {
 			System.out.print("AnagramFinder> ");
 			String word = user_input.nextLine();
 
 			if(word.equalsIgnoreCase("exit")) {
-				// Do nothing
+				flag = false;
+				break;
 			}else {
 				startTime = System.currentTimeMillis();
 				String sortedWord = sortString(word);
@@ -62,6 +66,7 @@ public class AnagramFinder {
 				endTime=System.currentTimeMillis();
 				printOutput(startTime,endTime,anagrams,word);
 			}
+		}
 	}
 
 	/* Core Logic */
@@ -74,26 +79,17 @@ public class AnagramFinder {
 	}
 
 	public ArrayList<String> findAnagrams (String word){
-        int length = word.length();
-        ArrayList <String> list = dictionary.get(length);
-        ArrayList <String> finalList = new ArrayList<String>();
-        for (String listValue : list){
-            String sortString1 = sortString(listValue);
-            String sortString2 = sortString(word);
-            if(sortString1.equalsIgnoreCase(sortString2)){
-                finalList.add(listValue);
-            }
-        }
-        return finalList;
+		return dictionary.get(word);
 	}
 
 	public void printOutput(long startTime, long endTime, ArrayList<String>  anagrams, String word) {
 		differenceTimeInMilli = endTime - startTime;
-		int numberOfAnagrams = anagrams.size();
-		if(numberOfAnagrams == 1) {
-			System.out.println("No anagrams found for "+word+" in "+differenceTimeInMilli+"ms");
-		}else {
-			System.out.println(numberOfAnagrams+ " Anagrams found for "+word +" in "+differenceTimeInMilli+"ms");
+		if(anagrams == null) {
+            System.out.println("No anagrams found for "+word+" in "+differenceTimeInMilli+"ms");
+        } else if(anagrams.size() == 1 || anagrams.size() == 0){
+            System.out.println("No anagrams found for "+word+" in "+differenceTimeInMilli+"ms");
+		} else {
+			System.out.println(anagrams.size()+ " Anagrams found for "+word +" in "+differenceTimeInMilli+"ms");
 			System.out.println(String.join(",", anagrams));
 		}
 	}
