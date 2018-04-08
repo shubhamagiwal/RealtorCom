@@ -72,6 +72,7 @@ public class AnagramFinder {
 	/* Core Logic */
 	/*Given a word, the function sorts the characters in a given word and returns back the sorted String */
 	public String sortString(String word) {
+		 word = word.toLowerCase();
 		 char tempArray[] = word.toCharArray();
 		 Arrays.sort(tempArray);
 		 String sortedString= new String(tempArray);
