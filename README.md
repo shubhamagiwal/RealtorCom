@@ -35,21 +35,34 @@ Functions used in the code base
 **public ArrayList<String> findAnagrams (String word)**
 *Input*- String<br>
 *Output*- ArrayList<String><br>
-*Description*- Returns the ArrayList of Integers for a given word
+*Description*- Returns the ArrayList of Strings for a given word from the HashMap
 
 **public void printOutput(long startTime, long endTime, ArrayList<String>  anagrams, String word)**
 *Input*- (long,long,ArrayList<String>,String)<br>
 *Output*- void<br>
 *Description*- Prints the output in a given format as mentioned in the project Description
 
+# Algorithm for the given code
+
+1. Create an empty HashMap<String,ArrayList<String>>
+2. For each word in HashMap:
+  Create a key that is the word's letters sorted alphabetically (and forced to one case)
+  Add the word to the list of words accessed by the hash key in HashMap
+
+# To check for all anagrams of a given word
+1. Enter the word on the console.
+2. Create a key that is the letters of the word, sorted alphabetically(and forced to one case)
+3. Look up that key in HashMap
+4. You now have a list of all anagrams for the corresponding key from the HashMap
+
 # Programming Setup
 
-1. Run the following command in the given `java -version` on your system
+1. Run the following command `java -version` on your system
 
-`Shubhams-MacBook-Pro-2:RealtorCom shubhamagiwal$ java -version
-java version "1.8.0_152"
-Java(TM) SE Runtime Environment (build 1.8.0_152-b16)
-Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)`
+`Shubhams-MacBook-Pro-2:RealtorCom shubhamagiwal$ java -version`
+`java version "1.8.0_152"`
+`Java(TM) SE Runtime Environment (build 1.8.0_152-b16)`
+`Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)`
 
 2. Ensure that java virtual machine and java versions are installed on your system.
 3. Run the given command `javac AnagramFinder.java`
