@@ -10,7 +10,7 @@ Reason to use the given  **data structure**
 1. Faster Lookup
 2. Time consumed during the load  of the dictionary initially is more than the time  during the lockup of the of the anagrams.
 
-**Note**- Given the anagram is rearranging of the letters - I have ignored the cases (Upper and LowerCase) for the word entered on the console and providing all the anagrams irrespective of the case. 
+**Note**- Given the anagram is rearranging of the letters - I have ignored the cases (Upper and LowerCase) for the word entered on the console and providing all the anagrams irrespective of the case.
 
 # Functions
 
@@ -63,10 +63,10 @@ Reason to use the given  **data structure**
 
 1. Run the following command `java -version` on your system
 
-`Shubhams-MacBook-Pro-2:RealtorCom shubhamagiwal$ java -version`
-`java version "1.8.0_152"`
-`Java(TM) SE Runtime Environment (build 1.8.0_152-b16)`
-`Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)`
+`Shubhams-MacBook-Pro-2:RealtorCom shubhamagiwal$ java -version`<br>
+`java version "1.8.0_152"`<br>
+`Java(TM) SE Runtime Environment (build 1.8.0_152-b16)`<br>
+`Java HotSpot(TM) 64-Bit Server VM (build 25.152-b16, mixed mode)`<br>
 
 2. Ensure that java virtual machine and java versions are installed on your system.
 3. Run the given command `javac AnagramFinder.java`
