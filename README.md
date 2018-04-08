@@ -10,7 +10,7 @@ Reason to use the given  **data structure**
 1. Faster Lookup
 2. Time consumed during the load  of the dictionary initially is more than the time  during the lockup of the of the anagrams.
 
-Functions used in the code base
+# Functions 
 
 **public void readFile(String fileName)**<br>
 
