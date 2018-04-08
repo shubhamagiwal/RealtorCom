@@ -4,14 +4,14 @@ import java.util.*;
 public class AnagramFinder {
 
 	private HashMap<String,ArrayList<String>> dictionary= new HashMap<String,ArrayList<String>> ();
-	long startTime,endTime;
-	long differenceTimeInMilli;
+	private long startTime,endTime;
+	private long differenceTimeInMilli;
 
 	public AnagramFinder() {
 		// TODO Auto-generated constructor stub
 	}
 
-	/* Read the contents of the file and put it into the dictionary created*/
+	/*Reads the contents of the file and puts it into the dictionary HashMap.*/
 	public void readFile(String fileName) {
 		System.out.println("Welcome to the Anagram Finder");
 		System.out.println("-----------------------------");
@@ -34,7 +34,7 @@ public class AnagramFinder {
 		}
 	}
 
-	/*Use HashMap to put the contents of the file*/
+	/*Places in the given word to the given key in the dictionary HashMap.*/
 	public void putIntoDictionary(String word) {
 		String wordSorted= sortString(word);
 		ArrayList <String> tempArray = new ArrayList<String>();
@@ -48,7 +48,7 @@ public class AnagramFinder {
 		}
 	}
 
-	/* Interactive Console*/
+	/*  Creates an Interactive Console as mentioned in the project description where it takes a string and finds its corresponding anagrams*/
 	public void interactiveConsole() {
 		Scanner user_input = new Scanner(System.in);
 		boolean flag = true;
@@ -70,6 +70,7 @@ public class AnagramFinder {
 	}
 
 	/* Core Logic */
+	/*Given a word, the function sorts the characters in a given word and returns back the sorted String */
 	public String sortString(String word) {
 		 char tempArray[] = word.toCharArray();
 		 Arrays.sort(tempArray);
@@ -78,10 +79,12 @@ public class AnagramFinder {
 	     return sortedString;
 	}
 
+    /*Returns the ArrayList of Strings for a given word from the HashMap*/
 	public ArrayList<String> findAnagrams (String word){
 		return dictionary.get(word);
 	}
 
+	/*Prints the output in a given format as mentioned in the project Description*/
 	public void printOutput(long startTime, long endTime, ArrayList<String>  anagrams, String word) {
 		differenceTimeInMilli = endTime - startTime;
 		if(anagrams == null) {
