@@ -10,7 +10,9 @@ Reason to use the given  **data structure**
 1. Faster Lookup
 2. Time consumed during the load  of the dictionary initially is more than the time  during the lockup of the of the anagrams.
 
-# Functions 
+**Note**- Given the anagram is rearranging of the letters - I have ignored the cases (Upper and LowerCase) for the word entered on the console and providing all the anagrams irrespective of the case. 
+
+# Functions
 
 **public void readFile(String fileName)**<br>
 

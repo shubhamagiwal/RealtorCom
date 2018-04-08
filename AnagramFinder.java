@@ -38,13 +38,13 @@ public class AnagramFinder {
 	public void putIntoDictionary(String word) {
 		String wordSorted= sortString(word);
 		ArrayList <String> tempArray = new ArrayList<String>();
-		if(dictionary.containsKey(wordSorted)) {
-		    tempArray=dictionary.get(wordSorted);
+		if(dictionary.containsKey(wordSorted.toLowerCase())) {
+		    tempArray=dictionary.get(wordSorted.toLowerCase());
 			tempArray.add(word);
-			dictionary.put(wordSorted,tempArray);
+			dictionary.put(wordSorted.toLowerCase(),tempArray);
 		}else {
 			tempArray.add(word);
-			dictionary.put(wordSorted,tempArray);
+			dictionary.put(wordSorted.toLowerCase(),tempArray);
 		}
 	}
 
@@ -81,7 +81,7 @@ public class AnagramFinder {
 
     /*Returns the ArrayList of Strings for a given word from the HashMap*/
 	public ArrayList<String> findAnagrams (String word){
-		return dictionary.get(word);
+		return dictionary.get(word.toLowerCase());
 	}
 
 	/*Prints the output in a given format as mentioned in the project Description*/
