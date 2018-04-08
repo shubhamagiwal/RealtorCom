@@ -12,32 +12,34 @@ Reason to use the given  **data structure**
 
 Functions used in the code base
 
-**public void readFile(String fileName)**
+**public void readFile(String fileName)**<br>
+
 *Input*- String <br>
 *Output*- void<br>
 *Description* -Reads the contents of the file and puts it into the dictionary HashMap.
 
-**public void putIntoDictionary(String word)**
+**public void putIntoDictionary(String word)**<br>
+
 *Input*- String<br>
 *Output*- void<br>
 *Description* -Places in the given word to the given key in the dictionary HashMap.
 
-**public void interactiveConsole()**
+**public void interactiveConsole()**<br>
 *Input*- Nothing<br>
 *Output*- void<br>
 *Description*- Creates an Interactive Console as mentioned in the project description where it takes a string and finds its corresponding anagrams
 
-**public String sortString(String word)**
+**public String sortString(String word)**<br>
 *Input*- String<br>
 *Output*- String<br>
 *Description*- Given a word, the function sorts the characters in a given word and returns back the sorted String
 
-**public ArrayList<String> findAnagrams (String word)**
+**public ArrayList<String> findAnagrams (String word)**<br>
 *Input*- String<br>
 *Output*- ArrayList<String><br>
 *Description*- Returns the ArrayList of Strings for a given word from the HashMap
 
-**public void printOutput(long startTime, long endTime, ArrayList<String>  anagrams, String word)**
+**public void printOutput(long startTime, long endTime, ArrayList<String>  anagrams, String word)**<br>
 *Input*- (long,long,ArrayList<String>,String)<br>
 *Output*- void<br>
 *Description*- Prints the output in a given format as mentioned in the project Description
