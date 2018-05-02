@@ -3,18 +3,17 @@ import java.util.*;
 
 public class AnagramFinder {
 
-	private HashMap<String,ArrayList<String>> dictionary= new HashMap<String,ArrayList<String>> ();
+	private HashMap<String,ArrayList<String>> dictionary = new HashMap<String,ArrayList<String>> ();
 	private long startTime,endTime;
 	private long differenceTimeInMilli;
+	String fileName;
 
-	public AnagramFinder() {
-		// TODO Auto-generated constructor stub
+	public AnagramFinder(String fileName){
+		this.fileName = fileName;
 	}
 
 	/*Reads the contents of the file and puts it into the dictionary HashMap.*/
-	public void readFile(String fileName) {
-		System.out.println("Welcome to the Anagram Finder");
-		System.out.println("-----------------------------");
+	public void readFile() {
 		startTime = System.currentTimeMillis();
 		try {
 			File file = new File(fileName);
@@ -27,22 +26,25 @@ public class AnagramFinder {
 				putIntoDictionary(line);
 			}
 			endTime = System.currentTimeMillis();
+			System.out.println("Welcome to the Anagram Finder");
+			System.out.println("-----------------------------");
 			System.out.println("Dictionary loaded in "+(endTime-startTime) + "ms");
 			fileReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
+			System.exit(0);
 		}
 	}
 
 	/*Places in the given word to the given key in the dictionary HashMap.*/
 	public void putIntoDictionary(String word) {
-		String wordSorted= sortString(word);
+		String wordSorted = sortString(word);
 		ArrayList <String> tempArray = new ArrayList<String>();
-		if(dictionary.containsKey(wordSorted.toLowerCase())) {
-		    tempArray=dictionary.get(wordSorted.toLowerCase());
+		if (dictionary.containsKey(wordSorted.toLowerCase())) {
+		    tempArray = dictionary.get(wordSorted.toLowerCase());
 			tempArray.add(word);
 			dictionary.put(wordSorted.toLowerCase(),tempArray);
-		}else {
+		} else {
 			tempArray.add(word);
 			dictionary.put(wordSorted.toLowerCase(),tempArray);
 		}
@@ -52,18 +54,17 @@ public class AnagramFinder {
 	public void interactiveConsole() {
 		Scanner user_input = new Scanner(System.in);
 		boolean flag = true;
-		while(flag) {
+		while (flag) {
 			System.out.print("AnagramFinder> ");
 			String word = user_input.nextLine();
-
-			if(word.equalsIgnoreCase("exit")) {
+			if (word.equalsIgnoreCase("exit")) {
 				flag = false;
 				break;
-			}else {
+			} else {
 				startTime = System.currentTimeMillis();
 				String sortedWord = sortString(word);
 				ArrayList<String> anagrams = findAnagrams(sortedWord);
-				endTime=System.currentTimeMillis();
+				endTime = System.currentTimeMillis();
 				printOutput(startTime,endTime,anagrams,word);
 			}
 		}
@@ -75,8 +76,8 @@ public class AnagramFinder {
 		 word = word.toLowerCase();
 		 char tempArray[] = word.toCharArray();
 		 Arrays.sort(tempArray);
-		 String sortedString= new String(tempArray);
-		 tempArray=null;
+		 String sortedString = new String(tempArray);
+		 tempArray = null;
 	     return sortedString;
 	}
 
@@ -88,20 +89,23 @@ public class AnagramFinder {
 	/*Prints the output in a given format as mentioned in the project Description*/
 	public void printOutput(long startTime, long endTime, ArrayList<String>  anagrams, String word) {
 		differenceTimeInMilli = endTime - startTime;
-		if(anagrams == null) {
-            System.out.println("No anagrams found for "+word+" in "+differenceTimeInMilli+"ms");
+		if (anagrams == null) {
+            System.out.println("No anagrams found for "+ word + " in " + differenceTimeInMilli + "ms");
         } else if(anagrams.size() == 1 || anagrams.size() == 0){
-            System.out.println("No anagrams found for "+word+" in "+differenceTimeInMilli+"ms");
+            System.out.println("No anagrams found for "+ word + " in " + differenceTimeInMilli + "ms");
 		} else {
-			System.out.println(anagrams.size()+ " Anagrams found for "+word +" in "+differenceTimeInMilli+"ms");
+			System.out.println(anagrams.size() + " Anagrams found for " + word + " in "+ differenceTimeInMilli + "ms");
 			System.out.println(String.join(",", anagrams));
 		}
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		AnagramFinder af = new AnagramFinder();
-		af.readFile(args[0]);
+		if (args.length <= 0){
+			System.out.println("Enter the file to be loaded.");
+			System.exit(0);
+		}
+		AnagramFinder af = new AnagramFinder(args[0]);
+		af.readFile();
 		af.interactiveConsole();
 	}
 
