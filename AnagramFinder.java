@@ -3,16 +3,29 @@ import java.util.*;
 
 public class AnagramFinder {
 
+
+	/**
+	 * Here we have an HashMap which keeps track of all the Anagrams which have the same sorted Array of characters.
+	 * startTime, endTime, differenceTimeInMilli to let calculate to search for the anagrams in th hashmap and loading of the dictionary into the hashmap
+	 * fileName is the name of the file which contains of the all words in a given file.
+	 */
+
 	private HashMap<String,ArrayList<String>> dictionary = new HashMap<String,ArrayList<String>> ();
 	private long startTime,endTime;
 	private long differenceTimeInMilli;
 	String fileName;
 
+	/**
+	 * Constructor of the class which takes the fileName as the Arguments
+	 */
 	public AnagramFinder(String fileName){
 		this.fileName = fileName;
 	}
 
-	/*Reads the contents of the file and puts it into the dictionary HashMap.*/
+	/**
+	 * Read the contents of the file and places it on the the dictionary by calling the putIntoDictionary() functions
+	 * @return void
+	 */
 	public void readFile() {
 		startTime = System.currentTimeMillis();
 		try {
@@ -36,7 +49,10 @@ public class AnagramFinder {
 		}
 	}
 
-	/*Places in the given word to the given key in the dictionary HashMap.*/
+	/**
+	 * Puts the contents of the file into the HashMap
+	 * @return void
+	 */
 	public void putIntoDictionary(String word) {
 		String wordSorted = sortString(word);
 		ArrayList <String> tempArray = new ArrayList<String>();
@@ -50,7 +66,10 @@ public class AnagramFinder {
 		}
 	}
 
-	/*  Creates an Interactive Console as mentioned in the project description where it takes a string and finds its corresponding anagrams*/
+	/**
+	 * Creates the interactive Console for the taking in the Anagram to be found for a given String
+	 * @return void
+	 */
 	public void interactiveConsole() {
 		Scanner user_input = new Scanner(System.in);
 		boolean flag = true;
@@ -70,8 +89,10 @@ public class AnagramFinder {
 		}
 	}
 
-	/* Core Logic */
-	/*Given a word, the function sorts the characters in a given word and returns back the sorted String */
+	/**
+	 * Sorts the characters in a given string
+	 * @return String
+	 */
 	public String sortString(String word) {
 		 word = word.toLowerCase();
 		 char tempArray[] = word.toCharArray();
@@ -81,12 +102,18 @@ public class AnagramFinder {
 	     return sortedString;
 	}
 
-    /*Returns the ArrayList of Strings for a given word from the HashMap*/
+	/**
+	 * Returns the list of Anagrams for a given String
+	 * @return ArrayList<String>
+	 */
 	public ArrayList<String> findAnagrams (String word){
 		return dictionary.get(word.toLowerCase());
 	}
 
-	/*Prints the output in a given format as mentioned in the project Description*/
+	/**
+	 * Prints the number of the Anagrams present for the given word with the time taken to find the given anagrams
+	 * @return void
+	 */
 	public void printOutput(long startTime, long endTime, ArrayList<String>  anagrams, String word) {
 		differenceTimeInMilli = endTime - startTime;
 		if (anagrams == null) {
@@ -98,6 +125,11 @@ public class AnagramFinder {
 			System.out.println(String.join(",", anagrams));
 		}
 	}
+
+	/**
+	 * Main of the program which takes the file name as the arguments and provides an interactiveConsole for the user
+	 * @return void
+	 */
 
 	public static void main(String[] args) {
 		if (args.length <= 0){
